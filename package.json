@@ -1,0 +1,28 @@
+{
+  "name": "notes-app",
+  "version": "1.0.0",
+  "description": "Nodejs backend for a simple notes app",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alahirajeffrey/notes-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alahirajeffrey/notes-app/issues"
+  },
+  "homepage": "https://github.com/alahirajeffrey/notes-app#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "mongoose": "^6.0.5",
+    "nodemon": "^2.0.12"
+  }
+}

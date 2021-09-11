@@ -1,9 +1,14 @@
-const joi = require('joi')
+const mongoose = require('mongoose')
 
-const NoteSchema = joi.object({
-    title : joi.string().required(),
-    note : joi.string().required(),
-    dataAdded : joi.string().default(new Date().toISOString() )
+const NoteSchema = mongoose.Schema({
+    title : {
+        type : String,
+        required : true
+    },
+    note : {
+        type : String,
+        required : true
+    }
 })
 
-module.exports = NoteSchema
+module.exports = mongoose.model('Note', NoteSchema)

@@ -46,13 +46,13 @@ exports.findAll = (req, res) =>{
 //retrieve single note
 exports.findOne = (req, res) =>{
     //validate request data
-    if(!req.params.title){
+    if(!req.body.title){
         return res.status(400).send(
-            {message : "Note title missing. Please include as parameter and try again"}
+            {message : "Note title missing. Please include and try again"}
         )
     }
     //find single note 
-    Note.findById(req.params.title)
+    Note.findById(req.body.title)
         .then(note =>{
             if(!note){
                 res.send(500).send({
@@ -62,7 +62,7 @@ exports.findOne = (req, res) =>{
                 res.send(note)
             }
         }).catch(err =>{
-            res.statu(500).send({
+            res.status(500).send({
                 message:'Error occured'
             })
         })
@@ -71,13 +71,13 @@ exports.findOne = (req, res) =>{
 //update note
 exports.update = (req, res) =>{
     //validate request data
-    if(!req.params.title){
+    if(!req.body.title){
         return res.status(400).send(
-            {message : "Note tile missing. Please include as parameter and try again"}
+            {message : "Note tile missing. Please include and try again"}
         )
     }
     //update note
-    Note.findByIdAndUpdate(req.params.title, {
+    Note.findByIdAndUpdate(req.body.title, {
         body : req.body.note
     }, {new: true})
         .then(note =>{
@@ -98,20 +98,20 @@ exports.update = (req, res) =>{
 //delete note
 exports.delete = (req, res) =>{
     //validate request data
-    if(!req.param.title){
+    if(!req.body.title){
         return res.status(400).send(
-            {message : "Note tile missing. Please include as parameter and try again"}
+            {message : "Note title missing. Please include as parameter and try again"}
         )
     }
     //delete note
-    Note.findOneAndDelete(req.params.title)
+    Note.findOneAndDelete(req.body.title)
         .then(note =>{
             if(!note){
                 res.send(500).send({
                 message : "note not found"
             })
             }else{
-                res.send(note)
+                res.send("Note deleted successfully")
             }
         }).catch(err =>{
             res.status(500).send({
